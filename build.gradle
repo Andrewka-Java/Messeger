@@ -1,36 +1,21 @@
 buildscript {
     apply from: rootProject.file('versions.gradle')
-
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-//        testImplementation 'org.jetbrains.kotlin:kotlin-test'
-    }
 }
 
 plugins {
     id 'org.jetbrains.kotlin.jvm' version "$kotlinVersion"
-    id 'application'
 }
 
-group = 'com.messeger'
-version = '1.0-SNAPSHOT'
-
-
-test {
-    useJUnitPlatform()
+subprojects {
+    apply from: rootProject.file('versions.gradle')
+    apply plugin: 'org.jetbrains.kotlin.jvm'
 }
 
-compileKotlin {
-    kotlinOptions.jvmTarget = '1.8'
-}
+allprojects {
+    group = 'com.messenger'
+    version = '1.0-SNAPSHOT'
 
-compileTestKotlin {
-    kotlinOptions.jvmTarget = '1.8'
-}
-
-application {
-    mainClassName = 'MainKt'
+    repositories {
+        mavenCentral()
+    }
 }

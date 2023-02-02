@@ -3,6 +3,7 @@ ext {
 
     http4kVersion = "4.33.3.0"
 
+    jwtVersion = "0.9.1"
     junitVersion = "5.9.0"
     junitPlatformLauncherVersion = "1.9.0"
     jsonUnitVersion = "2.21.0"
@@ -25,8 +26,8 @@ ext {
 
     http4kJson = [
             "org.http4k:http4k-format-jackson:$http4kVersion",
-            "io.cloudevents:cloudevents-core:2.4.0",
-            "io.cloudevents:cloudevents-json-jakson:2.4.0",
+//            "io.cloudevents:cloudevents-core:2.4.0",
+//            "io.cloudevents:cloudevents-json-jakson:2.4.0",
             "org.http4k:http4k-contract:$http4kVersion"
     ]
 
@@ -42,6 +43,10 @@ ext {
             "org.http4k:http4k-cloudnative:$http4kVersion",
             "org.http4k:http4k-client-okhttp:$http4kVersion",
     ] + http4kJson
+
+    jwt = [
+            "io.jsonwebtoken:jjwt:$jwtVersion"
+    ]
 
     database = [
             "org.jetbrains.exposed:exposed-core:$jetbrainsExposedVersion",
@@ -76,6 +81,5 @@ ext {
     testingMockk = [
             "io.mockk:mockk:$mockkVersion"
     ]
-
 
 }

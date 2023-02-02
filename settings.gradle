@@ -2,18 +2,6 @@ pluginManagement {
     includeBuild("build-logic")
 }
 
-buildscript {
-    apply from: file('versions.gradle')
-
-    repositories {
-        mavenCentral()
-    }
-}
-
-plugins {
-//    id "connect-gradle-settings"
-}
-
 static def isProject(final File file) {
     return file.isDirectory() && new File(file, "build.gradle").exists()
 }
@@ -32,13 +20,9 @@ static String[] discoverProjects(File rootDir, String... roots) {
 }
 
 include discoverProjects(rootProject. projectDir, "services")
-include 'libraries'
 include 'libraries:logger'
-findProject(':libraries:logger')?.name = 'logger'
 include 'libraries:auth'
-findProject(':libraries:auth')?.name = 'auth'
 include 'libraries:common'
-findProject(':libraries:common')?.name = 'common'
 include 'libraries:database'
 findProject(':libraries:database')?.name = 'database'
 

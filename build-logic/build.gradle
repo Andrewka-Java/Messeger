@@ -12,19 +12,12 @@ repositories {
     gradlePluginPortal()
 }
 
-tasks.register("unitTest", Test) {
-    group = "Messeger"
-    description = "Run unit tests"
-    reports.junitXml.destination = file("${rootProject.buildDir/test-reports/${project.name}-unit}")
-    useJUnitPlatform()
-}
+//tasks.register("unitTest", Test) {
+//    group = "messenger"
+//    description = "Run unit tests"
+//    reports.junitXml.destination = file("${rootProject.buildDir/test-reports/${project.name}-unit}")
+//}
 
 dependencies {
     implementation 'org.apache.groovy:groovy:4.0.2'
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
-
-test {
-    useJUnitPlatform()
 }
