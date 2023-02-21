@@ -16,15 +16,15 @@ class UserRoute : ContractRoutes {
 
     private val userIdLens = Path.of("id")
 
-    private val usersSpec = "users" meta {
+    private val usersSpec = "/users" meta {
         summary = "Get all users"
         returning(OK, BAD_REQUEST)
     }
-    private val userSpec = "users" / userIdLens meta {
+    private val userSpec = "/users" / userIdLens meta {
         summary = "Get user by id"
         returning(OK, BAD_REQUEST, NOT_FOUND)
     }
-    private val deleteUserSpec = "users" / userIdLens meta {
+    private val deleteUserSpec = "/users" / userIdLens meta {
         summary = "Get user by id"
         returning(OK, BAD_REQUEST, NOT_FOUND)
     }
