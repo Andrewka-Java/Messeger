@@ -12,8 +12,8 @@ import org.http4k.server.Undertow
 import org.http4k.server.asServer
 
 fun main() {
-    val server = DebuggingFilters.PrintRequest()
-        .then(authenticationFilter)
+    DebuggingFilters.PrintRequest()
+//        .then(authenticationFilter)
         .then(app)
         .asServer(Undertow(9000))
         .start()

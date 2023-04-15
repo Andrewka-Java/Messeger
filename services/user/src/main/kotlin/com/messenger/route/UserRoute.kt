@@ -1,14 +1,12 @@
 package com.messenger.route
 
 import com.messenger.model.ContractRoutes
-import com.messenger.model.User
 import com.messenger.model.Username
+import com.messenger.model.userLens
 import com.messenger.service.UserService
 import org.http4k.contract.ContractRoute
 import org.http4k.contract.div
 import org.http4k.contract.meta
-import org.http4k.contract.openapi.OpenAPIJackson.auto
-import org.http4k.core.Body
 import org.http4k.core.HttpHandler
 import org.http4k.core.Method.DELETE
 import org.http4k.core.Method.GET
@@ -23,7 +21,6 @@ class UserRoute(val userService: UserService) : ContractRoutes {
 
     private val userIdLens = Path.of("id")
     private val usernameLens = Path.of("username")
-    private val userLens = Body.auto<User>().toLens()
 
     private val usersSpec = "/users" meta {
         summary = "Get all users"

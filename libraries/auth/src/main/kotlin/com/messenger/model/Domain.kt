@@ -20,7 +20,5 @@ val loginRequestExample = LoginRequest(
     password = "Boris12345",
 )
 
-data class LogoutRequest(val userId: UserId)
-val logoutRequestLens = Body.auto<LogoutRequest>().toLens()
-val logoutRequestExample = LogoutRequest(userId = "12345")
+val userLens = Body.auto<User>().toLens()
 
