@@ -1,26 +1,25 @@
 package com.messenger
 
-import com.messenger.model.authenticationFilter
-import org.http4k.core.Method.GET
-import org.http4k.core.Response
-import org.http4k.core.Status.Companion.OK
-import org.http4k.core.then
+import com.messenger.route.UserRoute
+import com.messenger.service.UserService
+import org.http4k.contract.ContractRoute
 import org.http4k.filter.DebuggingFilters
-import org.http4k.routing.bind
-import org.http4k.routing.routes
 import org.http4k.server.Undertow
 import org.http4k.server.asServer
 
 fun main() {
     DebuggingFilters.PrintRequest()
-//        .then(authenticationFilter)
-        .then(app)
+        .then(getRoutes())
         .asServer(Undertow(9000))
         .start()
 }
 
-val app = routes(
-    "/users" bind GET to {
-        Response(OK).body("pong")
-    }
-)
+fun getRoutes(): List<ContractRoute> {
+    return UserRoute(
+        UserService::getAllUsers,
+        UserService::getUserById,
+        UserService::getUserByUsername,
+        UserService::saveUser,
+        UserService::deleteUserById
+    ).contractRoutes()
+}

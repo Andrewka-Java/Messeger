@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation project(":libraries:common")
     implementation project(":libraries:auth")
+    implementation project(":libraries:common")
 }

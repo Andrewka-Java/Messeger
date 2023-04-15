@@ -6,6 +6,7 @@ import org.http4k.format.Jackson.auto
 typealias UserId = String
 typealias Username = String
 typealias Password = String
+
 data class User(
     val userId: UserId?,
     val username: Username,
@@ -21,4 +22,5 @@ val loginRequestExample = LoginRequest(
 )
 
 val userLens = Body.auto<User>().toLens()
+val usersLens = Body.auto<List<User>>().toLens()
 
