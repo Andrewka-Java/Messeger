@@ -1,4 +1,4 @@
-package com.messenger.route
+package com.messenger.model
 
 import org.http4k.contract.ContractRoute
 

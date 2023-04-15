@@ -19,7 +19,7 @@ fun <T> getClaim(token: String, resolver: (Claims) -> (T)) = resolver.apply { ge
 fun generate(username: String, roles: List<String> = emptyList()) =
     Jwts.builder()
         .setClaims(
-            mapOf("roles" to roles)
+            mapOf("roles" to roles),
         )
         .setSubject(username)
         .setIssuedAt(Date(System.currentTimeMillis()))
@@ -27,6 +27,6 @@ fun generate(username: String, roles: List<String> = emptyList()) =
         .signWith(SignatureAlgorithm.HS512, secret)
         .compact()
 
-fun validate(token: String, username: String): Boolean  = (getClaim(token, Claims::getSubject) as String) == username || isExpired(token)
+fun validate(token: String, username: String): Boolean = (getClaim(token, Claims::getSubject) as String) == username || isExpired(token)
 
 fun isExpired(token: String) = (getClaim(token, Claims::getExpiration) as Date).before(Date())
